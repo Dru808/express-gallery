@@ -1,11 +1,13 @@
 
   <h1>All photos available</h1>
+
   {{#each photos}}
     <p>**************************</p>
     <p>author: {{author}}</p>
     <p>link: {{link}}</p>
     <p>description: {{description}}</p>
     <p>id: {{id}}</p>
+
   {{/each}}
   <form action="/gallery/" method="GET">
     <input type="submit" value="view all photos">
