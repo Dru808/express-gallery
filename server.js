@@ -4,6 +4,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const handlebars = require('express-handlebars');
+const methodOverride = require('method-override');
 
 // other file paths required
 const db = require('./models');

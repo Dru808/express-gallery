@@ -14,7 +14,6 @@ galleryRouter.route('/')
         let photos = allPhotos.map(item =>{
           return item.dataValues;
         });
-        console.log(photos);
         res.render('home', {photos: photos});
       })
       .catch(error=> {
@@ -35,6 +34,10 @@ galleryRouter.route('/')
 galleryRouter.route('/:id')
 
   .get((req, res) => {
+    if(req.params.id === 'new') {
+      res.render('gallery/new');
+      return;
+    }
     let photoId = req.params.id;
     getPhotoById(photoId)
       .then(photoResult =>{
@@ -48,11 +51,13 @@ galleryRouter.route('/:id')
       });
   })
   .put((req, res) => {
+    console.log('is this hitting PUT?');
     const photoId = req.params.id;
+    const photoInfo = req.body;
     editPhoto(photoInfo, photoId)
       .then(returnedPic => {
         console.log('picresult ', returnedPic);
-        res.render('')//comback later
+        res.render('gallery/edit', returnedPic);
       })
       .catch(error => {
         console.log(error);
@@ -60,12 +65,31 @@ galleryRouter.route('/:id')
     res.send('put works');
   })
   .delete((req, res) => {
+    console.log('is it hitting?');
+    removePhoto(req.params.id)
+    .then(anything => {
+      res.redirect('/gallery');
+    })
+    .catch(error => {
+      console.log(error);
+    });
     res.send('delete works');
   });
+  // .post((req, res) => {
+  //   console.log('post on id route is hitting');
+  // });
 
 galleryRouter.route('/:id/edit')
   .get((req, res) => {
-    res.send('get edit works');
+    getPhotoById(req.params.id)
+    .then(photoResult => {
+      let photoCleanUp = photoResult.dataValues;
+      console.log('photoResult ', photoCleanUp);
+      res.render('gallery/edit', photoCleanUp);
+    })
+    .catch(error => {
+      console.log(error);
+    });
   });
 
 

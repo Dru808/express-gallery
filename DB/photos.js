@@ -21,9 +21,12 @@ const editPhoto = (editInfo, editId) => {
 };
 
 const removePhoto = (removeInfo) => {
-  return drop(removeInfo);
+  return gallery.destroy({
+    where: {
+      id: removeInfo
+    }
+  });
 };
-
 const getAllPhotos = () => {
   allPhotos = gallery.findAll();
   return allPhotos;
