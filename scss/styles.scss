@@ -1,0 +1,33 @@
+header {
+  font-family: helvetica;
+  color: gray;
+  font-size: 50px;
+  width: 100%;
+  margin-bottom: 15px;
+
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background: url('../assets/background.png');
+  font-family: helvetica;
+  color: gray;
+
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+
+  width: 100%;
+
+  .gallery{
+
+
+  }
+
+  .single-photo{
+
+
+  }
+
+}
