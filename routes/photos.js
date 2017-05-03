@@ -34,6 +34,7 @@ galleryRouter.route('/')
 galleryRouter.route('/:id')
 
   .get((req, res) => {
+    console.log('get/id is hitting');
     if(req.params.id === 'new') {
       res.render('gallery/new');
       return;
@@ -56,13 +57,11 @@ galleryRouter.route('/:id')
     const photoInfo = req.body;
     editPhoto(photoInfo, photoId)
       .then(returnedPic => {
-        console.log('picresult ', returnedPic);
         res.render('gallery/edit', returnedPic);
       })
       .catch(error => {
         console.log(error);
       });
-    res.send('put works');
   })
   .delete((req, res) => {
     console.log('is it hitting?');
@@ -73,11 +72,7 @@ galleryRouter.route('/:id')
     .catch(error => {
       console.log(error);
     });
-    res.send('delete works');
   });
-  // .post((req, res) => {
-  //   console.log('post on id route is hitting');
-  // });
 
 galleryRouter.route('/:id/edit')
   .get((req, res) => {

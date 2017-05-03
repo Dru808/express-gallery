@@ -25,6 +25,7 @@ app.set('view engine', 'hbs');
 // body-parser middle-ware
 app.use(bodyParser.urlencoded({extended: false}));
 
+app.use(methodOverride('_method'));
 // default route
 app.get('/', function (req, res) {
   console.log(req);//put in index to show all phots later
