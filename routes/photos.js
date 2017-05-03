@@ -3,18 +3,29 @@
 const express = require('express');
 const galleryRouter = express.Router();
 const bodyParser = require('body-parser');
-const handlebars = require('express-handlebars');
-
 const {addPhoto, editPhoto, removePhoto, getAllPhotos, getPhotoById} = require('../DB/photos.js');
 
 
-
+// route "/gallery"
 galleryRouter.route('/')
+  .get((req, res) => {
+    getAllPhotos()
+      .then((allPhotos) => {
+        let photos = allPhotos.map(item =>{
+          return item.dataValues;
+        });
+        console.log(photos);
+        res.render('home', {photos: photos});
+      })
+      .catch(error=> {
+        console.log(error);
+      });
+  })
   .post((req, res) => {
     const photoInfo = req.body;
     addPhoto(photoInfo)
       .then(photos => {
-        res.render('home', photos);
+        res.redirect('/gallery');
       })
       .catch(error => {
         console.log(error);
@@ -24,26 +35,30 @@ galleryRouter.route('/')
 galleryRouter.route('/:id')
 
   .get((req, res) => {
-
-    const photoId = req.params.id;
-    console.log('reqParams ', req.params.id);
-    if(photoId === 'new') {
-        res.render('./gallery/new');
-    }
+    let photoId = req.params.id;
     getPhotoById(photoId)
-      .then(photo => {
-        console.log('photo ', photo);
-        // res.render('photo', {photo});
+      .then(photoResult =>{
+        let reqPhoto = photoResult.dataValues;
+        console.log(reqPhoto);
+        console.log('reqPhotos ', reqPhoto);
+        res.render('gallery/photo_id', reqPhoto);
       })
       .catch(error => {
         console.log(error);
       });
   })
-
   .put((req, res) => {
+    const photoId = req.params.id;
+    editPhoto(photoInfo, photoId)
+      .then(returnedPic => {
+        console.log('picresult ', returnedPic);
+        res.render('')//comback later
+      })
+      .catch(error => {
+        console.log(error);
+      });
     res.send('put works');
   })
-
   .delete((req, res) => {
     res.send('delete works');
   });

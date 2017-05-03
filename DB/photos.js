@@ -1,31 +1,32 @@
 /*jshint esversion: 6*/
 const express = require('express');
 const router = express.Router();
+const db = require('./connection');
+const gallery = require('../models').Picture;
+
 
 const addPhoto = (item) => {
-return {author: "Someone", link:"Link Here" , description: "Lorem Ipsum"};
-};
-
-const editPhoto = (editInfo, editId) => {
-
-};
-
-const removePhoto = (removeInfo) => {
-
-};
-
-const getAllPhotos = () => {
-
+console.log(item);
+return gallery.create(item);
 };
 
 const getPhotoById = (photoId) => {
 
-  return photoId;
-  // return Post.findAll({
-  //   where: {
-  //     id: photoId
-  //   }
-  // });
+  return gallery.findById(photoId);
+};
+
+const editPhoto = (editInfo, editId) => {
+  return update(editInfo); // Might need to add more to function
+
+};
+
+const removePhoto = (removeInfo) => {
+  return drop(removeInfo);
+};
+
+const getAllPhotos = () => {
+  allPhotos = gallery.findAll();
+  return allPhotos;
 };
 
 module.exports = {
