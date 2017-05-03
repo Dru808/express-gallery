@@ -57,7 +57,9 @@ galleryRouter.route('/:id')
     const photoInfo = req.body;
     editPhoto(photoInfo, photoId)
       .then(returnedPic => {
+
         res.render('gallery/edit', returnedPic);
+
       })
       .catch(error => {
         console.log(error);

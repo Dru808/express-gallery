@@ -1,23 +1,23 @@
    <h1>What will you like to edit?</h1>
-  <p>**************************</p>
 
-  <form action="/gallery/{{id}}?_method=PUT" method="POST" enctype="application/x-www-form-urlencoded">
-    author:<br>
-    <input type="text" name="author" value="{{author}}"><br>
+<div>
+  <form action="/products/{{id}}?_method=PUT" method="POST">
+      title:<br>
+      <input type="text" name="name" value="{{name}}"><br>
 
-    link:<br>
-    <input type="text" name="link" value="{{link}}" ><br>
+      author:<br>
+      <input type="text" name="price" value="{{price}}" ><br>
 
-    description:<br>
-    <input type="text" name="description" value="{{description}}"><br><br>
-
-    id:<br>
-    <input type="text" name="id" value="{{id}}"><br><br>
-    <input type="submit" value="Submit">
+      id:<br>
+      <input type="hidden" name="id" value="{{id}}"><br><br>
+      <input type="submit" value="Submit">
   </form>
-  <form action="/gallery/{{id}}?_method=DELETE" method="POST">
-     <input type="submit" value="delete">
+
+  <form action="/products/{{id}}?_method=DELETE" method="POST">
+       <input type="submit" value="delete">
   </form>
-  <form action="/gallery" method="GET">
-    <input type="submit" value="view all pictures">
+
+  <form action="/products" method="GET">
+       <input type="submit" value="view all products">
   </form>
+</div>

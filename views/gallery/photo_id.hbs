@@ -1,11 +1,11 @@
-  <h1>Photo by ID</h1>
+  <div class = "single-photo" >
+    <h1 class = "title-name" >{{title}}</h1>
 
-  <p>**************************</p>
-  <p>Author: {{author}}</p>
-  <p>link: {{link}}</p>
-  <p>Description: {{description}} </p>
-  <p>id: {{id}} </p>
+    <img id="{{id}}" alt="{{link}}" ></img>
+    <p class ="author" >{{author}}</p>
+    <p class ="description" >{{description}}</p>
 
-  <form action="/gallery/:id" method="GET">
-    <input type="submit" value="view all gallery/:id">
-  </form>
+    <form action="/gallery/:id" method="GET">
+      <input type="submit" value="view all gallery/:id">
+    </form>
+  </div>
