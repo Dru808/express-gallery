@@ -52,7 +52,7 @@ galleryRouter.route('/:id')
     editPhoto(photoInfo, photoId)
       .then(returnedPic => {
         console.log('picresult ', returnedPic);
-        res.render('')//comback later
+
       })
       .catch(error => {
         console.log(error);

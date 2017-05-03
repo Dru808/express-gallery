@@ -1,17 +1,15 @@
 
-  <h1>All photos available</h1>
-
+<div class = "gallery">
   {{#each photos}}
-    <p>**************************</p>
-    <p>author: {{author}}</p>
-    <p>link: {{link}}</p>
-    <p>description: {{description}}</p>
-    <p>id: {{id}}</p>
+    <img id="{{id}}" alt="{{link}}" ></img>
+    <p class ="author" >{{author}}</p>
+    <p class ="description" >{{description}}</p>
+</div>
 
   {{/each}}
-  <form action="/gallery/" method="GET">
-    <input type="submit" value="view all photos">
+  <form action="/gallery/:id" method="GET">
+    <input type="submit" value="Find Photo">
   </form>
   <form action="/gallery/new" method="GET">
-    <input type="submit" value="get new photo">
+    <input type="submit" value="Add New Photo">
   </form>
