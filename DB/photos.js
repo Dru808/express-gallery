@@ -16,14 +16,25 @@ const getPhotoById = (photoId) => {
 };
 
 const editPhoto = (editInfo, editId) => {
-  return update(editInfo); // Might need to add more to function
+  return gallery.update({
+    author: editInfo.author,
+    link: editInfo.link,
+    description: editInfo.description
+  },{
+    where: {
+      id: editId
+    }
+  }); // Might need to add more to function
 
 };
 
 const removePhoto = (removeInfo) => {
-  return drop(removeInfo);
+  return gallery.destroy({
+    where: {
+      id: removeInfo
+    }
+  });
 };
-
 const getAllPhotos = () => {
   allPhotos = gallery.findAll();
   return allPhotos;
