@@ -43,6 +43,7 @@ galleryRouter.route('/:id')
     getPhotoById(photoId)
       .then(photoResult =>{
         let reqPhoto = photoResult.dataValues;
+        console.log('reqPhoto ', reqPhoto);
         res.render('gallery/photo_id', reqPhoto);
       })
       .catch(error => {
