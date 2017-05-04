@@ -1,0 +1,17 @@
+
+<div class = "gallery">
+  {{#each photos}}
+    <img id="{{id}}" src="{{link}}">
+    <p class="title">{{title}}</p>
+    <p class="author" >{{author}}</p>
+    <p class="description" >{{description}}</p>
+    <p class="id">{{id}}</p>
+</div>
+
+  {{/each}}
+  <form action="/gallery/:id" method="GET">
+    <input type="submit" value="Find Photo">
+  </form>
+  <form action="/gallery/new" method="GET">
+    <input type="submit" value="Add New Photo">
+  </form>

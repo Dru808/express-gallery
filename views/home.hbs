@@ -1,15 +1,19 @@
+<link rel="stylesheet"  href="/css/styles.css">
+<div id="main-image-container">
+  <img id="main-image" src="http://www.goh2otours.com/wp-content/uploads/2016/06/Alaska.jpg" alt="">
 
-<div class = "gallery">
-  {{#each photos}}
-    <img id="{{id}}" alt="{{link}}" ></img>
-    <p class ="author" >{{author}}</p>
-    <p class ="description" >{{description}}</p>
+
+  <div class = "gallery">
+    {{#each photos}}
+      <div class="all-photos">
+        <img class="all-images" id="{{id}}" src="{{link}}">
+        <h3 class="title">{{title}}</h3>
+        <p class="author" >Author: {{author}}</p>
+        <p class="description" >{{description}}</p>
+
+      </div>
+    {{/each}}
+  </div>
+
 </div>
 
-  {{/each}}
-  <form action="/gallery/:id" method="GET">
-    <input type="submit" value="Find Photo">
-  </form>
-  <form action="/gallery/new" method="GET">
-    <input type="submit" value="Add New Photo">
-  </form>

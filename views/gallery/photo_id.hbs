@@ -1,8 +1,69 @@
+
+  <link rel="stylesheet"  href="/css/styles.css">
   <div class = "single-photo" >
-    <h1 class = "title-name" >{{title}}</h1>
 
-    <img class = "image" id="{{id}}" src= "{{link}} "alt="{{link}}" ></img>
-    <p class ="author" >{{author}}</p>
-    <p class ="description" >{{description}}</p>
 
+    <h1 class = "title-name" >
+      {{title}}
+    </h1>
+
+    <img id="imageById" src="{{link}}" >
+
+    <p class ="author" >
+      {{author}}
+    </p>
+
+    <p class ="description" >
+      {{description}}
+    </p>
+
+    <form action="/gallery/:id" method="GET">
+      <input type="submit" value="view all gallery/:id">
+    </form>
   </div>
+  <div id="rightColumn">
+
+    <div>
+      <h1>
+        Bears Need to Eat Too
+      </h1>
+      <img class="rightImages" src="http://www.nathab.com/uploaded-files/carousels/TRIPS/Ultimate-Alaska-Photo/Ultimate-Alaska-Photo-1-brooks-falls.jpg" alt="">
+      <div>
+        Andrew Tram
+      </div>
+      <div>
+        Bears fishing in Alaska
+      </div>
+    </div>
+
+    <div>
+      <h1>
+        Arctic Fox
+      </h1>
+      <img class="rightImages" src="http://images.amcnetworks.com/bbcamerica.com/wp-content/uploads/2015/02/16764841001_4072365978001_Wild-Alaska-2015-March-10-WebTeam-H264-Widescreen-1920x1080_1920x1080_685182019842-800x800.jpg" alt="">
+      <p>
+        Andrew Tram
+      </p>
+      <p>
+        Lone arctic fox giving the camera guy a sexy look while out hunting for food in wilds of Alsaska.
+      </p>
+    </div>
+
+    <div>
+      <h1>
+        Alaska Airlines
+      </h1>
+      <img class="rightImages" src="http://www.alaskastatefair.org/site/wp-content/uploads/2015/11/logo_alaskaairlinessponsor_trans.png" alt="">
+      <p>
+        Andrew Tram
+      </p>
+      <p>
+        Come fly the friendly skies with Alaska Airlines, where we don't beat you up and throw you off the plane.
+      </p>
+    </div>
+  </div>
+
+
+
+
+

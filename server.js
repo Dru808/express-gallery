@@ -172,6 +172,7 @@ app.get('/secret', isAuthenticated, (req, res) => {
 
   console.log('pinging the secret');
   res.send('you found the secret!');
+
 });
 
 // "/gallery" route handler

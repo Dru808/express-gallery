@@ -1,26 +1,72 @@
-header {
-  font-family: helvetica;
-  color: gray;
-  font-size: 50px;
-  width: 100%;
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: center; }
 
-body {
-  background: url("../assets/background.png");
-  font-family: helvetica;
-  color: gray;
-  display: flex;
-  justify-content: center;
-  flex-flow: column;
-  width: 100%; }
-  body .single-photo {
+@media (min-width: 1099px) {
+  header {
+    font-family: helvetica;
+    color: gray;
+    font-size: 50px;
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start; }
+  body {
+    background-image: url("../assets/background.png");
+    font-family: helvetica;
+    color: gray;
     display: flex;
     justify-content: center;
-    flex-flow: column;
-    margin: auto;
-    padding: 15%; }
-    body .single-photo .image {
-      max-height: 300px;
-      max-width: 400px; }
+    flex-direction: column;
+    width: 100%; }
+    body #Arch {
+      display: flex;
+      align-self: flex-start;
+      height: 100px;
+      width: 600px;
+      border-top: dotted gray;
+      padding-right: 300px;
+      padding-left: 90px;
+      font-size: 90px; }
+    body #welcome {
+      border-top: dotted gray;
+      border-left: solid gray;
+      padding-left: 15px;
+      font-size: 15px;
+      height: 100%;
+      width: 100%; }
+    body #injectedBody {
+      display: flex;
+      flex-display: row;
+      justify-content: space-between; }
+    body .single-photo {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-self: flex-start;
+      padding-left: 90px; }
+    body #rightColumn {
+      display: flex;
+      flex-direction: column; }
+    body .rightImages {
+      height: 250px;
+      width: 350px; }
+  #imageById {
+    height: 450px;
+    width: 650px; } }
+
+#main-image {
+  padding-left: 90px;
+  height: 900px; }
+
+.gallery {
+  display: flex;
+
+
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 90px; }
+
+.all-images {
+  height: 250px;
+  width: 300px;
+  margin: 15px; }
+

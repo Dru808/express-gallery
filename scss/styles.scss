@@ -1,4 +1,6 @@
-header {
+
+@media (min-width: 1099px) {
+  header {
   font-family: helvetica;
   color: gray;
   font-size: 50px;
@@ -6,39 +8,101 @@ header {
   margin-bottom: 5px;
 
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  align-content: flex-start;
+
+
 }
 
-body {
-  background: url('../assets/background.png');
-  font-family: helvetica;
-  color: gray;
+  body {
+    background-image: url('../assets/background.png');
+    font-family: helvetica;
+    color: gray;
 
-  display: flex;
-  justify-content: center;
-  flex-flow: column;
-
-  width: 100%;
-
-  .gallery {
-
-
-  }
-
-  .single-photo {
     display: flex;
     justify-content: center;
-    flex-flow: column;
+    flex-direction: column;
 
-    margin: auto;
-    padding: 15%;
+    width: 100%;
 
-    .image {
-      max-height: 300px;
-      max-width: 400px;
+
+    #Arch {
+      display: flex;
+      align-self: flex-start;
+
+      height: 100px;
+      width: 600px;
+
+
+
+      border-top: dotted gray;
+      padding-right: 300px;
+      padding-left: 90px;
+      font-size: 90px;
+    }
+
+    #welcome {
+      border-top: dotted gray;
+      border-left: solid gray;
+      padding-left: 15px;
+      font-size: 15px;
+      height: 100%;
+      width: 100%;
+    }
+
+    #injectedBody {
+      display: flex;
+      flex-display: row;
+      justify-content: space-between;
+    }
+
+    .single-photo {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-self: flex-start;
+
+      padding-left: 90px;
+    }
+
+    #rightColumn {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rightImages {
+      height: 250px;
+      width: 350px;
 
     }
 
   }
 
+  #imageById {
+    height: 450px;
+    width: 650px;
+  }
 }
+
+ //====================styles==for==home.hbs
+
+  #main-image {
+    padding-left: 90px;
+    height: 900px;
+  }
+
+ .gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  padding-left: 90px;
+ }
+
+ .all-images {
+  height: 250px;
+  width: 300px;
+  margin: 15px;
+
+ }
+

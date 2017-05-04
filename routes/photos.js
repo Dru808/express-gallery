@@ -43,8 +43,7 @@ galleryRouter.route('/:id')
     getPhotoById(photoId)
       .then(photoResult =>{
         let reqPhoto = photoResult.dataValues;
-        console.log(reqPhoto);
-        console.log('reqPhotos ', reqPhoto);
+        console.log('reqPhoto ', reqPhoto);
         res.render('gallery/photo_id', reqPhoto);
       })
       .catch(error => {
@@ -82,7 +81,6 @@ galleryRouter.route('/:id/edit')
     getPhotoById(req.params.id)
     .then(photoResult => {
       let photoCleanUp = photoResult.dataValues;
-      console.log('photoResult ', photoCleanUp);
       res.render('gallery/edit', photoCleanUp);
     })
     .catch(error => {
