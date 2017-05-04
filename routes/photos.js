@@ -2,7 +2,6 @@
 
 const express = require('express');
 const galleryRouter = express.Router();
-const bodyParser = require('body-parser');
 const {addPhoto, editPhoto, removePhoto, getAllPhotos, getPhotoById} = require('../DB/photos.js');
 
 
@@ -31,8 +30,9 @@ galleryRouter.route('/')
       });
   });
 
+// route "/gallery/:id"
 galleryRouter.route('/:id')
-
+  // send you to a form.
   .get((req, res) => {
     console.log('get/id is hitting');
     if(req.params.id === 'new') {
@@ -75,6 +75,7 @@ galleryRouter.route('/:id')
     });
   });
 
+// route "gallery/:id/edit" - sends you to a form
 galleryRouter.route('/:id/edit')
   .get((req, res) => {
     getPhotoById(req.params.id)
@@ -86,11 +87,5 @@ galleryRouter.route('/:id/edit')
       console.log(error);
     });
   });
-
-
-
-
-
-
 
 module.exports = galleryRouter;
