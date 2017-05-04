@@ -3,7 +3,7 @@ header {
   color: gray;
   font-size: 50px;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   display: flex;
   justify-content: center; }
 
@@ -15,3 +15,12 @@ body {
   justify-content: center;
   flex-flow: column;
   width: 100%; }
+  body .single-photo {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    margin: auto;
+    padding: 15%; }
+    body .single-photo .image {
+      max-height: 300px;
+      max-width: 400px; }

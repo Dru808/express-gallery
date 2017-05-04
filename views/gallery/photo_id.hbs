@@ -1,11 +1,8 @@
   <div class = "single-photo" >
     <h1 class = "title-name" >{{title}}</h1>
 
-    <img id="{{id}}" alt="{{link}}" ></img>
+    <img class = "image" id="{{id}}" src= "{{link}} "alt="{{link}}" ></img>
     <p class ="author" >{{author}}</p>
     <p class ="description" >{{description}}</p>
 
-    <form action="/gallery/:id" method="GET">
-      <input type="submit" value="view all gallery/:id">
-    </form>
   </div>
