@@ -23,6 +23,7 @@
       width: 600px;
       border-top: dotted gray;
       padding-right: 300px;
+      padding-left: 90px;
       font-size: 90px; }
     body #welcome {
       border-top: dotted gray;
@@ -39,7 +40,8 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      align-self: flex-start; }
+      align-self: flex-start;
+      padding-left: 90px; }
     body #rightColumn {
       display: flex;
       flex-direction: column; }

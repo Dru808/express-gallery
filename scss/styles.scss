@@ -35,6 +35,7 @@
 
       border-top: dotted gray;
       padding-right: 300px;
+      padding-left: 90px;
       font-size: 90px;
     }
 
@@ -58,6 +59,8 @@
       flex-direction: column;
       justify-content: flex-start;
       align-self: flex-start;
+
+      padding-left: 90px;
     }
 
     #rightColumn {
