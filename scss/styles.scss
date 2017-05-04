@@ -80,3 +80,26 @@
     width: 650px;
   }
 }
+
+ //====================styles==for==home.hbs
+
+  #main-image {
+    padding-left: 90px;
+    height: 900px;
+  }
+
+ .gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  padding-left: 90px;
+ }
+
+ .all-images {
+  height: 250px;
+  width: 300px;
+  margin: 15px;
+
+ }
+
