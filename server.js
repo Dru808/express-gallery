@@ -30,8 +30,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 // default route
 app.get('/', function (req, res) {
-  console.log(req);//put in index to show all phots later
-  res.send("test");
+
+  res.send("home");
 });
 
 // "/gallery" route handler

@@ -1,17 +1,35 @@
-header {
-  font-family: helvetica;
-  color: gray;
-  font-size: 50px;
-  width: 100%;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: center; }
-
-body {
-  background: url("../assets/background.png");
-  font-family: helvetica;
-  color: gray;
-  display: flex;
-  justify-content: center;
-  flex-flow: column;
-  width: 100%; }
+@media (min-width: 1099px) {
+  header {
+    font-family: helvetica;
+    color: gray;
+    font-size: 50px;
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start; }
+  body {
+    background-image: url("../assets/background.png");
+    font-family: helvetica;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    width: 100%; }
+    body #Arch {
+      display: flex;
+      align-self: flex-start;
+      height: 100px;
+      width: 600px;
+      border-top: dotted gray;
+      padding-right: 300px;
+      font-size: 90px;
+      background-color: red; }
+    body #welcome {
+      border-top: dotted gray;
+      border-left: solid gray;
+      padding-left: 15px;
+      font-size: 15px;
+      background-color: pink;
+      height: 100%;
+      width: 100%; } }

@@ -4,11 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Photo Gallery</title>
-  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet"  href="/css/styles.css">
 </head>
 <body>
-  <header id= "header">_ARCHITEKT</header>
-  {{{body}}}
+  <header id= "header">
+    <div id="Arch">
+     _ARCHITEKT
+    </div>
+    <div id="welcome">
+      {{> welcome }}
+    </div>
+  </header>
+  <div id="injectedBody">
+    {{{ body }}}
+  </div>
 </body>
 </html>
 
