@@ -38,8 +38,6 @@ const hbs = handlebars.create({
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
-app.use(express.static('public'));
-
 // instantiate body-parser middle-ware
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -49,7 +47,7 @@ app.use(methodOverride('_method'));
 // setup sessions
 app.use(session({
   store: new RedisStore(),
-  secret: 'something_super-weird',
+  secret: 'secret',
   resave: false,
   saveUninitialized: true
 }));
@@ -60,7 +58,7 @@ app.use(passport.session());
 
 // passport local Strategy
 passport.use(new LocalStrategy (
-  function(username, password, done) {
+    (username, password, done) => {
     console.log('runs before serializing');
     User.findOne({
       where: {
@@ -112,15 +110,20 @@ passport.deserializeUser(function(user, done) {
 
 
 // ROUTING
+
+app.use(express.static('public'));
+
 // default route
-app.get('/', function (req, res) {
-  console.log(req);//put in index to show all phots later
-  res.send("test");
+app.get('/', (req, res) => {
+  console.log(req);//put in index to show all photos later
+  res.send("hello");
+  //res.redirect('/gallery');;
 });
 
 // login section
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname + './views/login'));
+  //res.send('login success');
+  res.render('login');
 });
 
 app.post('/login', passport.authenticate('local', {
@@ -130,9 +133,12 @@ app.post('/login', passport.authenticate('local', {
 
 //new user section
 app.post('/user/new', (req, res) => {
+  console.log(req.body);
   bcrypt.genSalt(saltRounds, function(err, salt){
     bcrypt.hash(req.body.password, salt, function(err, hash) {
       User.create({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         username: req.body.username,
         password: hash
       })
@@ -170,6 +176,11 @@ app.get('/secret', isAuthenticated, (req, res) => {
 
 // "/gallery" route handler
 app.use('/gallery', galleryRouter);
+
+// 404 route
+app.get('*', (req, res) => {
+  res.render('404');
+});
 
 // create server
 app.listen(PORT, () => {
