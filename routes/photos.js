@@ -3,7 +3,7 @@
 const express = require('express');
 const galleryRouter = express.Router();
 const {addPhoto, editPhoto, removePhoto, getAllPhotos, getPhotoById} = require('../DB/photos.js');
-
+const isAuthenticated = require('./helpers.js');
 
 // route "/gallery"
 galleryRouter.route('/')
@@ -50,7 +50,7 @@ galleryRouter.route('/:id')
         console.log(error);
       });
   })
-  .put((req, res) => {
+  .put(isAuthenticated, (req, res) => {
     console.log('is this hitting PUT?');
     const photoId = req.params.id;
     const photoInfo = req.body;
@@ -64,7 +64,7 @@ galleryRouter.route('/:id')
         console.log(error);
       });
   })
-  .delete((req, res) => {
+  .delete(isAuthenticated, (req, res) => {
     console.log('is it hitting?');
     removePhoto(req.params.id)
     .then(anything => {
@@ -77,7 +77,7 @@ galleryRouter.route('/:id')
 
 // route "gallery/:id/edit" - sends you to a form
 galleryRouter.route('/:id/edit')
-  .get((req, res) => {
+  .get(isAuthenticated, (req, res) => {
     getPhotoById(req.params.id)
     .then(photoResult => {
       let photoCleanUp = photoResult.dataValues;

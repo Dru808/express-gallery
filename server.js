@@ -22,7 +22,8 @@ const bcrypt = require('bcrypt');
 
 // sequelize
 const db = require('./models');
-const { User } = require('bcrypt');
+const { User } = require('./models');
+
 
 const galleryRouter = require('./routes/photos.js');
 
@@ -56,7 +57,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// passport local Strategy
+//  step-3 - passport local Strategy
 passport.use(new LocalStrategy (
     (username, password, done) => {
     console.log('runs before serializing');
@@ -66,6 +67,7 @@ passport.use(new LocalStrategy (
       }
     })
     .then ( user => {
+      console.log('step-3; user: ', user);
       if (user === null) {
         console.log('user failed');
         return done(null, false, {message: 'bad username'});
@@ -86,6 +88,7 @@ passport.use(new LocalStrategy (
   }
 ));
 
+//step-3a - passed here from passport
 passport.serializeUser(function(user, done) {
   console.log('serializing');
 // ^ ---------- given from authentication strategy
@@ -120,30 +123,36 @@ app.get('/', (req, res) => {
   //res.redirect('/gallery');;
 });
 
-// login section
+//  step-1 login section - pulls up login form
 app.get('/login', (req, res) => {
-  //res.send('login success');
-  res.render('login');
+  console.log('step-1');
+  res.render('users/login');
 });
 
+//step-1a - if no user then pull this form to create user
+app.get('/user/new', (req, res) => {
+  console.log('creating user');
+  res.render('users/newUser');
+});
+
+//step-2 - passes login info to passport for verification
 app.post('/login', passport.authenticate('local', {
-  successRedirect: '/secret',
+  successRedirect: '/gallery',
   failureRedirect: '/login'
 }));
 
-//new user section
+// step-2a new user section - this executes when pressed submit on login form
 app.post('/user/new', (req, res) => {
-  console.log(req.body);
+  console.log('step-2');
   bcrypt.genSalt(saltRounds, function(err, salt){
     bcrypt.hash(req.body.password, salt, function(err, hash) {
       User.create({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
         username: req.body.username,
+        first_name: req.body.firstname,
+        last_name: req.body.lastname,
         password: hash
       })
       .then((user) => {
-        console.log(user);
         res.redirect('/login');
       });
     });
@@ -152,33 +161,25 @@ app.post('/user/new', (req, res) => {
 
 // secure routes
 // secure helper function
-function isAuthenticated (req, res, next) {
-  console.log('checking');
-  if(req.isAuthenticated()) {
-    console.log('you good');
-    next();
-  }else {
-    console.log('you bad!!!!');
-    res.redirect('/login');
-  }
-}
+//step-4 getting hung up over here....
+
 
 //"/secret" route
-app.get('/secret', isAuthenticated, (req, res) => {
-  console.log('req.user: ', req.user);
-  console.log('req.user id', req.user.id);
-  console.log('req.username', req.user.username);
-  console.log('req.user.password: ', req.user.password);
+// app.get('/secret', isAuthenticated, (req, res) => {
+//   console.log('req.user: ', req.user);
+//   console.log('req.user id', req.user.id);
+//   console.log('req.username', req.user.username);
+//   console.log('req.user.password: ', req.user.password);
 
-  console.log('pinging the secret');
-  res.send('you found the secret!');
+//   console.log('pinging the secret');
+//   res.redirect('/gallery');
 
-});
+// });
 
 // "/gallery" route handler
 app.use('/gallery', galleryRouter);
 
-// 404 route
+// 404 route - renders error page when path not found
 app.get('*', (req, res) => {
   res.render('404');
 });
